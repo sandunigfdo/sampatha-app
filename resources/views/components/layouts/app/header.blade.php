@@ -15,6 +15,11 @@
                 <flux:navbar.item icon="layout-grid" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>
                     {{ __('Dashboard') }}
                 </flux:navbar.item>
+                @if (Auth::user()->can('create', App\Models\User::class))
+                    <flux:navbar.item icon="user-plus" :href="route('create_user')" :current="request()->routeIs('create_user')" wire:navigate>
+                        {{ __('Add User') }}
+                    </flux:navbar.item>
+                @endif
             </flux:navbar>
 
             <flux:spacer />
@@ -23,7 +28,7 @@
                 <flux:tooltip :content="__('Search')" position="bottom">
                     <flux:navbar.item class="!h-10 [&>div>svg]:size-5" icon="magnifying-glass" href="#" :label="__('Search')" />
                 </flux:tooltip>
-                <flux:tooltip :content="__('Repository')" position="bottom">
+                {{-- <flux:tooltip :content="__('Repository')" position="bottom">
                     <flux:navbar.item
                         class="h-10 max-lg:hidden [&>div>svg]:size-5"
                         icon="folder-git-2"
@@ -40,7 +45,7 @@
                         target="_blank"
                         label="Documentation"
                     />
-                </flux:tooltip>
+                </flux:tooltip> --}}
             </flux:navbar>
 
             <!-- Desktop User Menu -->
@@ -101,12 +106,17 @@
                     <flux:navlist.item icon="layout-grid" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>
                     {{ __('Dashboard') }}
                     </flux:navlist.item>
+                    @if (Auth::user()->can('create', App\Models\User::class))
+                        <flux:navbar.item icon="user-plus" :href="route('create_user')" :current="request()->routeIs('create_user')" wire:navigate>
+                            {{ __('Add User') }}
+                        </flux:navbar.item>
+                    @endif
                 </flux:navlist.group>
             </flux:navlist>
 
             <flux:spacer />
 
-            <flux:navlist variant="outline">
+            {{-- <flux:navlist variant="outline">
                 <flux:navlist.item icon="folder-git-2" href="https://github.com/laravel/livewire-starter-kit" target="_blank">
                 {{ __('Repository') }}
                 </flux:navlist.item>
@@ -114,7 +124,7 @@
                 <flux:navlist.item icon="book-open-text" href="https://laravel.com/docs/starter-kits" target="_blank">
                 {{ __('Documentation') }}
                 </flux:navlist.item>
-            </flux:navlist>
+            </flux:navlist> --}}
         </flux:sidebar>
 
         {{ $slot }}

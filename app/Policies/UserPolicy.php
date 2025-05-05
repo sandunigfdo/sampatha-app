@@ -25,11 +25,11 @@ class UserPolicy
 
     /**
      * Determine whether the user can create models.
-     * Only admin can create a new user.
+     * Admin and manager can create a new user.
      */
     public function create(User $user): bool
     {
-        return $user->role_id === 1;
+        return $user->role_id === 1 || $user->role_id === 3;
     }
 
     /**

@@ -28,12 +28,12 @@ class CreateUser extends Component
      * Handle an incoming add user request.
      */
     public function create_user(Request $request, User $user): void    
-    {              
+    {                    
         /**
          * Determine whether the user can create a new user
          */
         if ($request->user()->can('create',$user)){
-            
+           
             $validated = $this->validate([
                 'name' => ['required', 'string', 'max:255'],
                 'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
@@ -50,6 +50,7 @@ class CreateUser extends Component
     
             $this->dispatch('user-created');
         }
+
         else{
             abort(403);
             

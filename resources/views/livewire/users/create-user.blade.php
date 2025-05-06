@@ -84,30 +84,27 @@
                 :placeholder="__('Confirm password')"
             />
 
-                <!-- Role -->                
-                <flux:select 
-                wire:model="role"                                        
-                placeholder="Select role"
-                :label="__('User Role')"
-                >
-                    @foreach (\App\Models\Role::all() as $role )
-                        <flux:select.option value="{{ $role->id }}">{{ $role->role_name }}</flux:select.option>                    
-                    @endforeach
-                                        
-                </flux:select>               
-                                       
-                <div class="flex items-center gap-4">
-                    <div class="flex items-center justify-end">
-                        <flux:button variant="primary" type="submit" class="w-full">{{ __('Add User') }}</flux:button>
-                    </div>
-                    <x-action-message class="me-3" on="user-created">
-                        {{ __('Saved') }}
-                    </x-action-message>
+            <!-- Role -->                
+            <flux:select 
+            wire:model="role"                                        
+            placeholder="Select role"
+            :label="__('User Role')"
+            >
+                @foreach (\App\Models\Role::all() as $role )
+                    <flux:select.option value="{{ $role->id }}">{{ $role->role_name }}</flux:select.option>                    
+                @endforeach
+                                    
+            </flux:select>               
+                                    
+            <div class="flex items-center gap-4">
+                <div class="flex items-center justify-end">
+                    <flux:button variant="primary" type="submit" class="w-full">{{ __('Save') }}</flux:button>
                 </div>
-
-                                
-            </form>       
-            
-        </div>        
+                <x-action-message class="me-3" on="user-created">
+                    {{ __('Saved') }}
+                </x-action-message>
+            </div>
+                            
+        </form>    
     </x-layouts.users.layout>
 </section>

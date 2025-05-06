@@ -76,13 +76,11 @@
                                 {{ $user->role->role_name }}
                             </td>
                             <td
-                                class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium sm:pl-0">
-                                <a href="{{ route('update_users', $user) }}" class="text-yellow-200 hover:text-yellow-300">Edit
-                                    <span class="sr-only"></span>
-                                </a>
-                                <a href="#" class="text-red-400 hover:text-red-600 pl-6">Delete
-                                    <span class="sr-only"></span>
-                                </a>
+                                class="whitespace-nowrap py-4 pl-4 text-sm font-medium sm:pl-0"> 
+                                <div class="flex items-center space-x-6">
+                                    <flux:button href="{{ route('update_users', $user) }}" variant="filled" size="sm">Edit</flux:button>
+                                    <flux:button href="#" variant="primary" size="sm">Delete</flux:button>
+                                </div>                               
                             </td>
                         </tr>
                     @endforeach

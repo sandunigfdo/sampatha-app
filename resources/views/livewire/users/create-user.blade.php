@@ -1,7 +1,7 @@
 <section class="w-full">
-    @include('partials.create-user-heading')
+    @include('partials.users-heading')
 
-    <x-layouts.users.layout>
+    <x-layouts.users.layout :heading="__('Add new user')" :subheading="__('Create a new user account.')">
         {{-- <form wire:submit="updateProfileInformation" class="my-6 w-full space-y-6">
             <flux:input wire:model="name" :label="__('Name')" type="text" required autofocus autocomplete="name" />
 
@@ -37,52 +37,52 @@
                 </x-action-message>
             </div>
         </form> --}}
-        <div class="flex flex-col gap-6">
+        
                     
-            <!-- Session Status -->
-            <x-auth-session-status class="text-center" :status="session('status')" />
-        
-            <form wire:submit="create_user" class="flex flex-col gap-6 mx-6">
-                <!-- Name -->
-                <flux:input
-                    wire:model="name"
-                    :label="__('Name')"
-                    type="text"
-                    required
-                    autofocus
-                    autocomplete="name"
-                    :placeholder="__('Full name')"
-                />
-        
-                <!-- Email Address -->
-                <flux:input
-                    wire:model="email"
-                    :label="__('Email address')"
-                    type="email"
-                    required
-                    autocomplete="email"
-                    placeholder="email@example.com"
-                />
-        
-                <!-- Password -->
-                <flux:input
-                    wire:model="password"
-                    :label="__('Password')"
-                    type="password"
-                    required
-                    autocomplete="new-password"
-                    :placeholder="__('Password')"
-                />
-        
-                <!-- Confirm Password -->
-                <flux:input
-                    wire:model="password_confirmation"
-                    :label="__('Confirm password')"
-                    type="password"
-                    required
-                    autocomplete="new-password"
-                    :placeholder="__('Confirm password')"
-                />
+        <!-- Session Status -->
+        <x-auth-session-status class="text-center" :status="session('status')" />
+    
+        <form wire:submit="create_user" class="my-6 w-full space-y-6">
+            <!-- Name -->
+            <flux:input
+                wire:model="name"
+                :label="__('Name')"
+                type="text"
+                required
+                autofocus
+                autocomplete="name"
+                :placeholder="__('Full name')"
+            />
+    
+            <!-- Email Address -->
+            <flux:input
+                wire:model="email"
+                :label="__('Email address')"
+                type="email"
+                required
+                autocomplete="email"
+                placeholder="email@example.com"
+            />
+    
+            <!-- Password -->
+            <flux:input
+                wire:model="password"
+                :label="__('Password')"
+                type="password"
+                required
+                autocomplete="new-password"
+                :placeholder="__('Password')"
+            />
+    
+            <!-- Confirm Password -->
+            <flux:input
+                wire:model="password_confirmation"
+                :label="__('Confirm password')"
+                type="password"
+                required
+                autocomplete="new-password"
+                :placeholder="__('Confirm password')"
+            />
 
                 <!-- Role -->                
                 <flux:select 

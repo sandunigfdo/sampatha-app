@@ -15,8 +15,8 @@
                 <flux:navbar.item icon="layout-grid" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>
                     {{ __('Dashboard') }}
                 </flux:navbar.item>
-                {{-- #TODO Update the rule here. --}}
-                @if (Auth::user()->can('create', App\Models\User::class))
+                
+                @if (Auth::user()->can('viewAny', App\Models\User::class))
                     <flux:navbar.item icon="user-group" :href="route('list_users')" :current="request()->routeIs('list_users')" wire:navigate>
                         {{ __('Users') }}
                     </flux:navbar.item>

@@ -21,10 +21,9 @@ class ListUsers extends Component
         // Delete the selected user
 
         $user = User::findOrFail($id);                     
-        $user->delete();
+        $user->delete();        
         
-        // #TODO check whether the user has permission to delete a user
-    } 
+    }     
 
     public function render()
     {

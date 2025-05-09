@@ -1,7 +1,7 @@
 <section class="w-full">
     @include('partials.users-heading')
 
-    <x-layouts.users.layout :heading="__('Users')" :subheading="__('List of all user accounts')">       
+    <x-layouts.users.layout :heading="__('Users')" :subheading="__('List of all user accounts')">
         {{-- <form wire:submit="updateProfileInformation" class="my-6 w-full space-y-6">
             <flux:input wire:model="name" :label="__('Name')" type="text" required autofocus autocomplete="name" />
 
@@ -40,62 +40,71 @@
         <div class="my-6 w-full space-y-6">
 
             <!-- Session Status -->
-            <x-auth-session-status class="text-center" :status="session('status')" />            
+            <x-auth-session-status class="text-center" :status="session('status')" />
 
-            <table class="min-w-full divide-y divide-gray-600">
-                <thead>
-                    <tr>
-                        <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-white sm:pl-0">ID</th>
-                        <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-white sm:pl-0">Name</th>
-                        <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-white sm:pl-0">Email</th>
-                        <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-white sm:pl-0">Role</th> 
-                        <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-white sm:pl-0">Action</th> 
-                                              
-                        <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-0">
-                            <span class="sr-only">Edit</span>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody class="divide-y divide-gray-600">
-                    @foreach (\App\Models\User::all() as $user)
+            @if (Auth::user()->can('viewAny', App\Models\User::class))
+                <table class="min-w-full divide-y divide-gray-600">
+                    <thead>
                         <tr>
-                            <td wire:key="{{ $user->id }}"
-                                class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-0">
-                                {{ $user->id }}
-                            </td>
-                            <td wire:key="{{ $user->id }}"
-                                class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-0">
-                                {{ $user->name }}
-                            </td>
-                            <td wire:key="{{ $user->id }}"
-                                class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-0">
-                                {{ $user->email }}
-                            </td>
-                            <td wire:key="{{ $user->id }}"
-                                class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-0">
-                                {{ $user->role->role_name }}
-                            </td>
-                            <td
-                                class="whitespace-nowrap py-4 pl-4 text-sm font-medium sm:pl-0"> 
-                                <div class="flex items-center space-x-6">
-                                    <flux:button href="{{ route('update_users', $user) }}" variant="filled" size="sm">Edit</flux:button>
-                                    <flux:button href="#" variant="primary" size="sm">Delete</flux:button>
-                                </div>                               
-                            </td>
+                            <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-white sm:pl-0">ID</th>
+                            <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-white sm:pl-0">Name</th>
+                            <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-white sm:pl-0">Email</th>
+                            <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-white sm:pl-0">Role</th>
+                            <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-white sm:pl-0">Action</th>                        
                         </tr>
-                    @endforeach
-                   
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody class="divide-y divide-gray-600">
+                        @foreach (\App\Models\User::all() as $user)
+                            <tr>
+                                <td wire:key="{{ $user->id }}"
+                                    class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-0">
+                                    {{ $user->id }}
+                                </td>
+                                <td wire:key="{{ $user->id }}"
+                                    class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-0">
+                                    {{ $user->name }}
+                                </td>
+                                <td wire:key="{{ $user->id }}"
+                                    class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-0">
+                                    {{ $user->email }}
+                                </td>
+                                <td wire:key="{{ $user->id }}"
+                                    class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-0">
+                                    {{ $user->role->role_name }}
+                                </td>
+                                <td class="whitespace-nowrap py-4 pl-4 text-sm font-medium sm:pl-0">
+                                    <div class="flex items-center space-x-6">
+                                        <flux:button href="{{ route('update_users', $user) }}" variant="filled"
+                                            size="sm">Edit</flux:button>                                    
 
-            {{-- <div class="flex items-center gap-4">
-                    <div class="flex items-center justify-end">
-                        <flux:button variant="primary" type="submit" class="w-full">{{ __('Add User') }}</flux:button>
-                    </div>
-                    <x-action-message class="me-3" on="user-created">
-                        {{ __('Saved') }}
-                    </x-action-message>
-                </div> --}}
+                                        <flux:modal.trigger :name="'user_deletion'.$user->id">
+                                            <flux:button variant="primary" size="sm">Delete</flux:button>
+                                        </flux:modal.trigger>
+
+                                        <flux:modal :name="'user_deletion'.$user->id" class="max-w-lg">
+                                            <div class="space-y-6">
+                                                <div>
+                                                    <flux:heading size="lg">Delete User Account</flux:heading>
+                                                    <flux:text class="mt-2 mb-4">Are you sure you want to delete this account?</flux:text>                               
+                                                
+                                                </div>
+                                            </div>
+
+                                            <div class="flex">                                         
+                                                <flux:spacer />
+                                                <flux:button wire:click="delete_user({{ $user->id }})" variant="danger" size="sm" :loading="true">Delete</flux:button>
+                                            </div>
+
+                                        </flux:modal>                                    
+
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+
+                    </tbody>
+                </table>
+            @endif          
 
             </form>
 
@@ -104,9 +113,8 @@
                     <flux:button href="{{ route('create_user') }}" icon:trailing="user-plus">Add User</flux:button>
                 </div>
             </x-slot>
-        
+
 
         </div>
     </x-layouts.users.layout>
 </section>
-

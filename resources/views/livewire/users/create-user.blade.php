@@ -98,11 +98,21 @@
                                     
             <div class="flex items-center gap-4">
                 <div class="flex items-center justify-end">
-                    <flux:button variant="primary" type="submit" class="w-full">{{ __('Save') }}</flux:button>
+                    <flux:button variant="primary" type="submit" class="w-full" :loading="true">{{ __('Save') }}</flux:button>
                 </div>
-                <x-action-message class="me-3" on="user-created">
-                    {{ __('Saved') }}
-                </x-action-message>
+
+                {{-- <flux:modal.close>
+                        <flux:button href="{{ route('list_users') }}" variant="filled" type="submit" class="w-full">{{ __('Cancel') }}</flux:button>
+                </flux:modal.close> --}}
+                
+            </div>
+
+            <div class="flex flex-col md:flex-row flex-1 max-md:pt-6">
+                <div class="w-1/5">
+                    <x-action-message class="me-3" on="user-created">
+                        <flux:callout variant="success" icon="check-circle" heading="Saved" />                        
+                    </x-action-message>
+                </div>
             </div>
                             
         </form>    

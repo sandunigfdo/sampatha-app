@@ -25,11 +25,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('settings/password', Password::class)->name('settings.password');
     Route::get('settings/appearance', Appearance::class)->name('settings.appearance');
 
-    Route::get('create-user', CreateUser::class)->name('create_user')
+    Route::get('create-user', CreateUser::class)->name('users.create')
         ->can('create',User::class);
-    Route::get('list-users', ListUsers::class)->name('list_users')
+    Route::get('list-users', ListUsers::class)->name('users.list')
         ->can('viewAny', User::class);
-    Route::get('update-users/{user}', UpdateUser::class)->name('update_users')
+    Route::get('update-users/{user}', UpdateUser::class)->name('users.update')
         ->can('update', User::class);  
     
    

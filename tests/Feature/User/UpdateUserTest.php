@@ -11,7 +11,7 @@ test('Page contains the user-update component when the URL is visited by admin',
     $admin = User::factory()->asAdmin()->create();
     $id = $admin->id;    
 
-    $response = $this->actingAs($admin)->get(route('update_users', ['user' => $id]));    
+    $response = $this->actingAs($admin)->get(route('users.update', ['user' => $id]));    
     $response->assertStatus(200);
     $response->assertSeeLivewire(UpdateUser::class); # Livewire smoke test
 });
@@ -20,7 +20,7 @@ test('Page contains the user-update component when the URL is visited by manager
     $manager = User::factory()->asManager()->create();
     $id = $manager->id;    
 
-    $response = $this->actingAs($manager)->get(route('update_users', ['user' => $id]));    
+    $response = $this->actingAs($manager)->get(route('users.update', ['user' => $id]));    
     $response->assertStatus(200);
     $response->assertSeeLivewire(UpdateUser::class); # Livewire smoke test
 });
@@ -29,7 +29,7 @@ test('Users can not see update user component when the URL is visited by user', 
     $user = User::factory()->create();
     $id = $user->id;    
 
-    $response = $this->actingAs($user)->get(route('update_users', ['user' => $id]));    
+    $response = $this->actingAs($user)->get(route('users.update', ['user' => $id]));    
     $response->assertStatus(403);    
 });
 

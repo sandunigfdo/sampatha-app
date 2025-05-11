@@ -65,7 +65,7 @@
                         {{ __('Save') }}</flux:button>
 
                     <flux:modal.close>
-                        <flux:button href="{{ route('list_users') }}" variant="filled" type="submit" class="w-full">
+                        <flux:button href="{{ route('users.list') }}" variant="ghost" type="submit" class="w-full">
                             {{ __('Cancel') }}</flux:button>
                     </flux:modal.close>
                 </div>

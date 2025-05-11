@@ -114,12 +114,13 @@
             @endif          
 
             </form>
-
-            <x-slot name="right">
-                <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-                    <flux:button href="{{ route('create_user') }}" icon:trailing="user-plus">Add User</flux:button>
-                </div>
-            </x-slot>
+            
+            {{-- Add user button --}}
+            
+            <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
+                <flux:button href="{{ route('users.create') }}" icon:trailing="user-plus">Add User</flux:button>
+            </div>
+            
 
 
         </div>

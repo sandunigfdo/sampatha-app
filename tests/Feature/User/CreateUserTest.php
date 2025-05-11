@@ -14,14 +14,14 @@ test('admin user can access create-user page', function () {
     $response->assertStatus(200);
 });
 
-test('Manager can access create-user page', function () {
+test('manager user can access create-user page', function () {
     $manager = User::factory()->asManager()->create();
 
     $response = $this->actingAs($manager)->get('/create-user');
     $response->assertStatus(200);
 });
 
-test('user user can not access create-user page', function () {
+test('user can not access create-user page', function () {
     $user = User::factory()->create();
 
     $response = $this->actingAs($user)->get('/create-user');    
@@ -85,7 +85,8 @@ test('user can not create new users', function () {
         ->set('password', 'password')
         ->set('password_confirmation', 'password')
         ->set('role', 2)
-        ->call('create_user');       
+        ->call('create_user')      
+        ->assertForbidden(); 
 
     
         $this->assertDatabaseMissing('users',[

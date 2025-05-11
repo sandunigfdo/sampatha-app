@@ -74,7 +74,7 @@
                                 </td>
                                 <td class="whitespace-nowrap py-4 pl-4 text-sm font-medium sm:pl-0">
                                     <div class="flex items-center space-x-6">
-                                        <flux:button href="{{ route('update_users', $user) }}" variant="filled"
+                                        <flux:button href="{{ route('users.update', $user) }}" variant="filled"
                                             size="sm">Edit</flux:button>                                    
 
                                         <flux:modal.trigger :name="'user_deletion'.$user->id">

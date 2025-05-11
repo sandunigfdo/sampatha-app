@@ -17,7 +17,7 @@
                 </flux:navbar.item>
                 
                 @if (Auth::user()->can('viewAny', App\Models\User::class))
-                    <flux:navbar.item icon="user-group" :href="route('list_users')" :current="request()->routeIs('list_users')" wire:navigate>
+                    <flux:navbar.item icon="user-group" :href="route('users.list')" :current="request()->routeIs('users.*')" wire:navigate>
                         {{ __('Users') }}
                     </flux:navbar.item>
                 @endif
@@ -109,7 +109,7 @@
                     </flux:navlist.item>
                     
                     @if (Auth::user()->can('viewAny', App\Models\User::class))
-                        <flux:navbar.item icon="user-group" :href="route('list_users')" :current="request()->routeIs('list_users')" wire:navigate>
+                        <flux:navbar.item icon="user-group" :href="route('users.list')" :current="request()->routeIs('users.list')" wire:navigate>
                             {{ __('Users') }}
                         </flux:navbar.item>
                     @endif

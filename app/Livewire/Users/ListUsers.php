@@ -6,9 +6,23 @@ use App\Models\User;
 use Livewire\Component;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class ListUsers extends Component
 {
+    public $users;
+    
+
+    public function mount(){
+        
+        if (Auth::user()->role_id === 2){
+            throw new HttpException(403, 'Unauthorized to view user list.');
+        }
+        else {
+            $this->users = User::all();
+        }
+    }
+
       /**
      * Delete the selected user
      */ 
@@ -23,10 +37,11 @@ class ListUsers extends Component
         $user = User::findOrFail($id);                     
         $user->delete();        
         
-    }     
+    }    
+    
 
     public function render()
-    {
+    {        
         return view('livewire.users.list-users');
     }
 }

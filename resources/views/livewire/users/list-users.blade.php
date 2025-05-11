@@ -43,7 +43,62 @@
             <x-auth-session-status class="text-center" :status="session('status')" />
 
             @if (Auth::user()->can('viewAny', App\Models\User::class))
-                <table class="min-w-full divide-y divide-gray-600">
+                <div>
+                    <flux:table class="block mx-auto w-fit">
+                        <flux:table.columns>
+                            <flux:table.column>ID</flux:table.column>
+                            <flux:table.column>Name</flux:table.column>
+                            <flux:table.column>Email</flux:table.column>
+                            <flux:table.column>Role</flux:table.column>
+                            <flux:table.column>Action</flux:table.column>
+                        </flux:table.columns>
+
+                        <flux:table.rows>                    
+                            @foreach (\App\Models\User::all() as $user)
+                                <flux:table.row>
+                                    <flux:table.cell wire:key="{{ $user->id }}">{{ $user->id }}</flux:table.cell>
+                                    <flux:table.cell wire:key="{{ $user->id }}">{{ $user->name }}</flux:table.cell>
+                                    <flux:table.cell wire:key="{{ $user->id }}">{{ $user->email }}</flux:table.cell>
+                                    <flux:table.cell wire:key="{{ $user->id }}">{{ $user->role->role_name }}</flux:table.cell>
+                                    <flux:table.cell>
+                                        <div class="flex items-center space-x-6">
+                                            <flux:button href="{{ route('users.update', $user) }}" variant="filled"
+                                                size="sm">Edit</flux:button>                                    
+
+                                            <flux:modal.trigger :name="'user_deletion'.$user->id">
+                                                <flux:button variant="primary" size="sm">Delete</flux:button>
+                                            </flux:modal.trigger>
+
+                                            <flux:modal :name="'user_deletion'.$user->id" class="max-w-lg">
+                                                <div class="space-y-6">
+                                                    <div>
+                                                        <flux:heading size="lg">Delete User Account</flux:heading>
+                                                        <flux:text class="mt-2 mb-4">
+                                                            <p>Are you sure you want to delete this account?</p>
+                                                            <p>This action can not be reversed.</p>
+                                                        </flux:text>                               
+                                                    
+                                                    </div>
+                                                </div>
+
+                                                <div class="flex gap-2">                                         
+                                                    <flux:spacer />
+                                                    <flux:modal.close>
+                                                        <flux:button variant="ghost" size="sm">Cancel</flux:button>
+                                                    </flux:modal.close>
+                                                    <flux:button wire:click="delete_user({{ $user->id }})" variant="danger" size="sm" :loading="true">Delete</flux:button>                                            
+                                                </div>
+
+                                            </flux:modal>                                    
+
+                                        </div>
+                                    </flux:table.cell>
+                                </flux:table.row>
+                            @endforeach     
+                        </flux:table.rows>
+                    </flux:table>
+                <div>
+                {{-- <table class="min-w-full divide-y divide-white-800">
                     <thead>
                         <tr>
                             <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-white sm:pl-0">ID</th>
@@ -98,8 +153,7 @@
                                                 <flux:modal.close>
                                                     <flux:button variant="ghost" size="sm">Cancel</flux:button>
                                                 </flux:modal.close>
-                                                <flux:button wire:click="delete_user({{ $user->id }})" variant="danger" size="sm" :loading="true">Delete</flux:button>
-                                                {{-- <flux:button href="{{ route('users.list') }}" variant="filled" size="sm">Cancel</flux:button> --}}
+                                                <flux:button wire:click="delete_user({{ $user->id }})" variant="danger" size="sm" :loading="true">Delete</flux:button>                                                
                                             </div>
 
                                         </flux:modal>                                    
@@ -110,19 +164,8 @@
                         @endforeach
 
                     </tbody>
-                </table>
-            @endif          
-
-            </form>
-            
-            {{-- Add user button --}}
-            
-            <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-                <flux:button href="{{ route('users.create') }}" icon:trailing="user-plus">Add User</flux:button>
-            </div>
-            
-
-
+                </table> --}}
+            @endif 
         </div>
     </x-layouts.users.layout>
 </section>

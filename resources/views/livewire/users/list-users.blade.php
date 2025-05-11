@@ -85,14 +85,21 @@
                                             <div class="space-y-6">
                                                 <div>
                                                     <flux:heading size="lg">Delete User Account</flux:heading>
-                                                    <flux:text class="mt-2 mb-4">Are you sure you want to delete this account?</flux:text>                               
+                                                    <flux:text class="mt-2 mb-4">
+                                                        <p>Are you sure you want to delete this account?</p>
+                                                        <p>This action can not be reversed.</p>
+                                                    </flux:text>                               
                                                 
                                                 </div>
                                             </div>
 
-                                            <div class="flex">                                         
+                                            <div class="flex gap-2">                                         
                                                 <flux:spacer />
+                                                <flux:modal.close>
+                                                    <flux:button variant="ghost" size="sm">Cancel</flux:button>
+                                                </flux:modal.close>
                                                 <flux:button wire:click="delete_user({{ $user->id }})" variant="danger" size="sm" :loading="true">Delete</flux:button>
+                                                {{-- <flux:button href="{{ route('users.list') }}" variant="filled" size="sm">Cancel</flux:button> --}}
                                             </div>
 
                                         </flux:modal>                                    

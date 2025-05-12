@@ -37,7 +37,14 @@
                 </x-action-message>
             </div>
         </form>
+        <flux:separator  class="mt-6" variant="subtle" />
 
         <livewire:settings.delete-user-form />
+        <flux:separator  class="mt-6" variant="subtle" />
+
+        <livewire:settings.password/>
+        <flux:separator class="mt-6" variant="subtle" />
+
+        <livewire:settings.appearance/>
     </x-settings.layout>
 </section>

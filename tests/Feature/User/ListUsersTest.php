@@ -23,7 +23,7 @@ test('Page contains the user-list component when the URL is visited by manager',
     $response->assertSeeLivewire(ListUsers::class); # Livewire smoke test
 });
 
-test('Users can not see user-list component when the URL is visited by user', function () {
+test('Users can not see user-list component when the URL is visited', function () {
     $user = User::factory()->create();
 
     $response = $this->actingAs($user)->get('/list-users');    

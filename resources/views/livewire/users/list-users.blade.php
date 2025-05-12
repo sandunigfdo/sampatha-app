@@ -1,7 +1,7 @@
 <section class="w-full">
     @include('partials.users-heading')
 
-    <x-layouts.users.layout :heading="__('Users')" :subheading="__('List of all user accounts')">        
+    <x-layouts.users.btnlayout :heading="__('Users')" :subheading="__('List of all user accounts')">        
         <div class="my-6 w-full space-y-6">
 
             <!-- Session Status -->

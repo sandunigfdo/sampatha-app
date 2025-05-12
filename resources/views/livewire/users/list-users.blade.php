@@ -43,8 +43,8 @@
             <x-auth-session-status class="text-center" :status="session('status')" />
 
             @if (Auth::user()->can('viewAny', App\Models\User::class))
-                <div>
-                    <flux:table class="block mx-auto w-fit">
+                <div class="min-w-full">
+                    <flux:table class="min-w-full">
                         <flux:table.columns>
                             <flux:table.column>ID</flux:table.column>
                             <flux:table.column>Name</flux:table.column>
@@ -98,7 +98,7 @@
                         </flux:table.rows>
                     </flux:table>
                 <div>
-                {{-- <table class="min-w-full divide-y divide-white-800">
+                {{-- <table class="min-w-full text-zinc-800 divide-y divide-zinc-800/10 dark:divide-white/20">
                     <thead>
                         <tr>
                             <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-white sm:pl-0">ID</th>
@@ -108,7 +108,7 @@
                             <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-white sm:pl-0">Action</th>                        
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-gray-600">
+                    <tbody class="min-w-full text-zinc-800 divide-y divide-zinc-800/10 dark:divide-white/20">
                         @foreach (\App\Models\User::all() as $user)
                             <tr>
                                 <td wire:key="{{ $user->id }}"

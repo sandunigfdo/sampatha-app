@@ -35,7 +35,9 @@ class ListUsers extends Component
         // Delete the selected user
 
         $user = User::findOrFail($id);                     
-        $user->delete();        
+        $user->delete();  
+        
+        $this->dispatch('user-deleted');
         
     }    
     

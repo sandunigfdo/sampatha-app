@@ -28,10 +28,10 @@
                                     <flux:table.cell>
                                         <div class="flex items-center space-x-6">
                                             <flux:button href="{{ route('users.update', $user) }}" variant="filled"
-                                                size="sm">Edit</flux:button>                                    
+                                                size="sm" icon="user-circle">Edit</flux:button>                                    
 
                                             <flux:modal.trigger :name="'user_deletion'.$user->id">
-                                                <flux:button variant="primary" size="sm">Delete</flux:button>
+                                                <flux:button variant="filled" size="sm" icon="user-minus">Delete</flux:button>
                                             </flux:modal.trigger>
 
                                             <flux:modal :name="'user_deletion'.$user->id" class="max-w-lg">

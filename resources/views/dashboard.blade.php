@@ -1,16 +1,16 @@
 <x-layouts.app :title="__('Dashboard')">
 
     <div class="flex h-full w-full">        
-        <div class="mt-5 ml-1 mr-1 w-full">          
+        <div class="mt-5 w-full">          
             
             {{-- First row --}}
-            <div class="flex gap-12 pb-8 border-b border-neutral-700">
+            <div class="flex gap-12 pb-8">
 
                 <div class="w-1/2 space-y-6">
                     <div class="w-100 space-y-6">
                         <form class="my-6 space-y-6">
                             <flux:heading>Search Member</flux:heading>                                                   
-                            <flux:input icon="magnifying-glass" :label="__('සාමාජික අංකය')" placeholder="Search" clearable/>
+                            <flux:input icon="magnifying-glass" :label="__('සාමාජික අංකය')" placeholder="Search" clearable required autofocus/>
                             <flux:input type="date" max="2999-12-31" label="දිනය" />                            
                         </form>
                     </div>
@@ -21,7 +21,9 @@
         </div>
     </div>
 
-    <div class="flex w-full pt-4 pb-8 border-b border-neutral-700">        
+    <flux:separator variant="subtle"/>
+
+    <div class="flex w-full pt-4 pb-8">        
         <div class="min-w-full">
             <flux:table class="min-w-full">
                 <flux:table.columns>
@@ -89,14 +91,16 @@
 
         </div>
         
-    </div>    
+    </div>  
+    
+    <flux:separator variant="subtle"/>
 
     <div class="flex h-full w-full">        
         <div class="mt-5 ml-1 mr-1 w-full">           
             
             <form wire:submit="" class="my-6 w-full">
                 {{-- First row --}}
-                <div class="flex gap-12 pb-8 border-b border-neutral-700">
+                <div class="flex gap-12 pb-8">
 
                     <div class="w-1/2 space-y-6">
                         <div class="w-100 space-y-6">
@@ -105,9 +109,7 @@
                             <flux:input 
                                 wire:model="fine" 
                                 :label="__('දඩ')" 
-                                type="text" 
-                                required autofocus
-                                autocomplete="name"                                 
+                                type="text"                                                                  
                                 clearable
                             />
                             
@@ -115,9 +117,7 @@
                             <flux:input 
                                 wire:model="monthly_payment" 
                                 :label="__('මාසික ගෙවීම')" 
-                                type="text" 
-                                required autofocus
-                                autocomplete="monthly_payment"                                  
+                                type="text"                                                                  
                                 clearable
                             />
         
@@ -125,9 +125,7 @@
                             <flux:input 
                                 wire:model="total" 
                                 :label="__('එකතුව')" 
-                                type="text" 
-                                required autofocus
-                                autocomplete="total"                                
+                                type="text"                                                                
                                 clearable
                             />  
                         </div>
@@ -140,9 +138,7 @@
                             <flux:input 
                                 wire:model="monthly_payment" 
                                 :label="__('මාසික ගෙවීම')" 
-                                type="text" 
-                                required autofocus
-                                autocomplete="monthly_payment"                                  
+                                type="text"                                                                  
                                 clearable
                             />
             
@@ -150,17 +146,17 @@
                             <flux:input 
                                 wire:model="total" 
                                 :label="__('එකතුව')" 
-                                type="text" 
-                                required autofocus
-                                autocomplete="total"                                 
+                                type="text"                                                                 
                                 clearable
                             />
                         </div>
                     </div>
                 </div>
 
+                <flux:separator variant="subtle"/>
+
                 {{-- Second row --}}
-                <div class="flex gap-12 mt-12 pb-8 border-b border-neutral-700">
+                <div class="flex gap-12 mt-12 pb-8">
                     <div class="w-1/2 space-y-6">
                         <div class="w-100 space-y-6">
                             <flux:heading>රක්ෂණ හා ලාභ සම</flux:heading>
@@ -168,9 +164,7 @@
                             <flux:input 
                                 wire:model="fee" 
                                 :label="__('මුදල')" 
-                                type="text" 
-                                required autofocus
-                                autocomplete="fee"                                  
+                                type="text"                                                                 
                                 clearable
                             />
                         </div>
@@ -182,17 +176,17 @@
                             <flux:input 
                                 wire:model="fee" 
                                 :label="__('මුදල')" 
-                                type="text" 
-                                required autofocus
-                                autocomplete="fee"                                  
+                                type="text"                                                                  
                                 clearable
                             />
                         </div>
                     </div>
                 </div>
 
+                <flux:separator variant="subtle"/>
+
                 {{-- Third row --}}
-                <div class="flex gap-12 mt-12 pb-8 border-b border-neutral-700">
+                <div class="flex gap-12 mt-12 pb-8">
                     <div class="w-1/2 space-y-6">
                         <div class="w-100 space-y-6">
                             <flux:heading>දිගු කාලීන ණය</flux:heading>
@@ -200,46 +194,36 @@
                             <flux:input 
                                 wire:model="fine" 
                                 :label="__('දඩ')" 
-                                type="text" 
-                                required autofocus
-                                autocomplete="fine"                                 
+                                type="text"                                                                 
                                 clearable
                             />
                             {{-- Fee --}}
                             <flux:input 
                                 wire:model="fee" 
                                 :label="__('ණය මුදල')" 
-                                type="text" 
-                                required autofocus
-                                autocomplete="fee"                                  
+                                type="text"                                                                  
                                 clearable
                             />
                             {{-- Interest --}}
                             <flux:input 
                                 wire:model="interest" 
                                 :label="__('පොළිය')" 
-                                type="text" 
-                                required autofocus
-                                autocomplete="interest"                                
+                                type="text"                                                                
                                 clearable 
                             />
                             {{-- Installment --}}
                             <flux:input 
                                 wire:model="installment" 
                                 :label="__('වාරිකය')" 
-                                type="text" 
-                                required autofocus
-                                autocomplete="installment"                                  
+                                type="text"                                                                  
                                 clearable
                             />
                             {{-- Balance --}}
                             <flux:input 
                                 wire:model="balance" 
                                 :label="__('ශේෂය')" 
-                                type="text" 
-                                required autofocus
-                                autocomplete="balance"                                  
-                                clearable
+                                type="text"                                                                  
+                                clearable                                
                             />
                         </div>
                     </div>
@@ -250,75 +234,67 @@
                             <flux:input 
                                 wire:model="fine" 
                                 :label="__('දඩ')" 
-                                type="text" 
-                                required autofocus
-                                autocomplete="fine"                                  
+                                type="text"                                                                
                                 clearable
                             />
                             {{-- Fee --}}
                             <flux:input 
                                 wire:model="fee" 
                                 :label="__('ණය මුදල')" 
-                                type="text" 
-                                required autofocus
-                                autocomplete="fee"                                  
+                                type="text"                                                                 
                                 clearable
                             />
                             {{-- Interest --}}
                             <flux:input 
                                 wire:model="interest" 
                                 :label="__('පොළිය')" 
-                                type="text" 
-                                required autofocus
-                                autocomplete="interest"                                 
+                                type="text"                                                                 
                                 clearable
                             />
                             {{-- Installment --}}
                             <flux:input 
                                 wire:model="installment" 
                                 :label="__('වාරිකය')" 
-                                type="text" 
-                                required autofocus
-                                autocomplete="installment"                                 
+                                type="text"                                                                 
                                 clearable 
                             />
                             {{-- Balance --}}
                             <flux:input 
                                 wire:model="balance" 
                                 :label="__('ශේෂය')" 
-                                type="text" 
-                                required autofocus
-                                autocomplete="balance"                                  
+                                type="text"                                                                  
                                 clearable
                             />
                         </div>
                     </div>
                 </div>
 
+                <flux:separator variant="subtle"/>
+
                 {{-- Fourth row --}}                
-                <div class="flex gap-12 mt-12 pb-8 border-b border-neutral-700">
+                <div class="flex gap-12 mt-12 pb-8">
                     <div class="space-y-6 w-128">                        
                         <flux:heading>අමතර විස්තර</flux:heading>
                         {{-- Description --}}
                         <flux:textarea 
-                            wire:model="description" 
-                            :label="__('විස්තර')" 
+                            wire:model="description"                            
                             resize="both"
                                                         
                         />                        
                     </div>
                 </div>
 
+                <flux:separator variant="subtle"/>
+
                 {{-- Fifth row --}}                
-                <div class="flex gap-12 mt-12 pb-8 border-b border-neutral-700">
+                <div class="flex gap-12 mt-12 pb-8">
                     <div class="w-1/2 space-y-6">
                         <div class="w-100 space-y-6">
                             <flux:heading>එකතුව</flux:heading>
                             {{-- Total --}}
                             <flux:input 
                                 wire:model="total"                                 
-                                type="text" 
-                                required autofocus                                                                                              
+                                type="text"                                                                                                                             
                                 clearable
                             />
 
@@ -326,6 +302,7 @@
                     </div>
                 </div>
 
+                <flux:separator variant="subtle"/>
                 
                 <div class="flex items-center gap-4 mt-6">
                     <div class="flex items-center justify-end gap-4">

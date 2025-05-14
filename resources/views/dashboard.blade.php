@@ -153,39 +153,9 @@
                     </div>
                 </div>
 
-                <flux:separator variant="subtle"/>
+                <flux:separator variant="subtle"/>                
 
                 {{-- Second row --}}
-                <div class="flex gap-12 mt-12 pb-8">
-                    <div class="w-1/2 space-y-6">
-                        <div class="w-100 space-y-6">
-                            <flux:heading>රක්ෂණ හා ලාභ සම</flux:heading>
-                            {{-- Fee --}}
-                            <flux:input 
-                                wire:model="fee" 
-                                :label="__('මුදල')" 
-                                type="text"                                                                 
-                                clearable
-                            />
-                        </div>
-                    </div>
-                    <div class="w-1/2 space-y-6">
-                        <div class="w-100 space-y-6">
-                            <flux:heading>විවිද ආදායම් හා තැපැල් ගාස්තු</flux:heading>
-                            {{-- Fee --}}
-                            <flux:input 
-                                wire:model="fee" 
-                                :label="__('මුදල')" 
-                                type="text"                                                                  
-                                clearable
-                            />
-                        </div>
-                    </div>
-                </div>
-
-                <flux:separator variant="subtle"/>
-
-                {{-- Third row --}}
                 <div class="flex gap-12 mt-12 pb-8">
                     <div class="w-1/2 space-y-6">
                         <div class="w-100 space-y-6">
@@ -262,6 +232,36 @@
                             <flux:input 
                                 wire:model="balance" 
                                 :label="__('ශේෂය')" 
+                                type="text"                                                                  
+                                clearable
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                <flux:separator variant="subtle"/>
+
+                {{-- Third row --}}
+                <div class="flex gap-12 mt-12 pb-8">
+                    <div class="w-1/2 space-y-6">
+                        <div class="w-100 space-y-6">
+                            <flux:heading>රක්ෂණ හා ලාභ සම</flux:heading>
+                            {{-- Fee --}}
+                            <flux:input 
+                                wire:model="fee" 
+                                :label="__('මුදල')" 
+                                type="text"                                                                 
+                                clearable
+                            />
+                        </div>
+                    </div>
+                    <div class="w-1/2 space-y-6">
+                        <div class="w-100 space-y-6">
+                            <flux:heading>විවිද ආදායම් හා තැපැල් ගාස්තු</flux:heading>
+                            {{-- Fee --}}
+                            <flux:input 
+                                wire:model="fee" 
+                                :label="__('මුදල')" 
                                 type="text"                                                                  
                                 clearable
                             />

@@ -49,8 +49,7 @@
                 :label="__('Name')"
                 type="text"
                 required
-                autofocus
-                autocomplete="name"
+                autofocus                
                 :placeholder="__('Full name')"
             />
     
@@ -59,8 +58,7 @@
                 wire:model="email"
                 :label="__('Email address')"
                 type="email"
-                required
-                autocomplete="email"
+                required                
                 placeholder="email@example.com"
             />
     
@@ -69,8 +67,7 @@
                 wire:model="password"
                 :label="__('Password')"
                 type="password"
-                required
-                autocomplete="new-password"
+                required                
                 :placeholder="__('Password')"
             />
     
@@ -79,8 +76,7 @@
                 wire:model="password_confirmation"
                 :label="__('Confirm password')"
                 type="password"
-                required
-                autocomplete="new-password"
+                required                
                 :placeholder="__('Confirm password')"
             />
 

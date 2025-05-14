@@ -1,5 +1,4 @@
-<section class="w-full mt-8">
-    {{-- @include('partials.settings-heading') --}}
+<section class="w-full mt-8">    
 
     <x-settings.layout :heading="__('Appearance')" :subheading=" __('Update the appearance settings for your account')">
         <flux:radio.group x-data variant="segmented" x-model="$flux.appearance">

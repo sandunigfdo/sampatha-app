@@ -91,7 +91,7 @@
 
         </div>
         
-    </div>  
+    </div>   
     
     <flux:separator variant="subtle"/>
 
